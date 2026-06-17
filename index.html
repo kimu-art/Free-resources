@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>免費筆刷與教學 ｜ KIMUART</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FFFFFF; --paper-2:#FAF7F3; --sand:#F2EDE6; --sand-line:#E9E2D8;
+    --ink:#3E322A; --ink-soft:#6B5E53; --ink-faint:#A99C8D;
+    --terra:#B96B41; --terra-deep:#9E5530; --glow:#F7E6C9;
+    --maxw:1080px; --measure:600px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink-soft);
+    font-family:"Noto Sans TC",system-ui,sans-serif; font-weight:300;
+    font-size:17px; line-height:1.95; letter-spacing:.02em;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  h1,h2,h3{font-family:"Noto Serif TC",serif; color:var(--ink); font-weight:600; line-height:1.45; letter-spacing:.03em;}
+  strong{font-weight:500; color:var(--ink);}
+  a{color:var(--terra-deep);}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 26px; position:relative; z-index:2;}
+  .narrow{max-width:var(--measure); margin-left:auto; margin-right:auto;}
+  section{padding:80px 0; position:relative;}
+  @media(max-width:680px){ section{padding:56px 0;} body{font-size:16px;} }
+
+  .eyebrow{font-family:"Cormorant Garamond",serif; font-size:1.05rem; letter-spacing:.32em; text-transform:uppercase; color:var(--terra); font-weight:600; margin:0 0 14px;}
+  .zh-eyebrow{font-size:.82rem; letter-spacing:.42em; color:var(--terra); font-weight:500; margin:0 0 18px; font-family:"Noto Sans TC";}
+
+  .brush{position:relative; display:inline-block;}
+  .brush svg{position:absolute; left:-4%; bottom:-.42em; width:108%; height:.5em; color:var(--terra); opacity:.65;}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:.6em; background:var(--terra); color:#FFF8EF;
+    font-family:"Noto Sans TC"; font-weight:500; font-size:1.02rem; letter-spacing:.06em;
+    padding:15px 30px; border-radius:40px; text-decoration:none; border:none; cursor:pointer;
+    box-shadow:0 10px 26px -12px rgba(158,85,48,.6);
+    transition:transform .25s ease, background .25s ease, box-shadow .25s ease;
+  }
+  .btn:hover{background:var(--terra-deep); transform:translateY(-2px); box-shadow:0 16px 30px -12px rgba(158,85,48,.65);}
+  .btn-ghost{
+    display:inline-flex; align-items:center; gap:.6em; background:transparent; color:var(--terra-deep);
+    font-family:"Noto Sans TC"; font-weight:500; font-size:1.02rem; letter-spacing:.06em;
+    padding:13px 28px; border-radius:40px; text-decoration:none; border:1.5px solid var(--terra);
+    transition:transform .25s ease, background .25s ease;
+  }
+  .btn-ghost:hover{background:var(--glow); transform:translateY(-2px); color:var(--terra-deep);}
+  .btn .dot{width:7px;height:7px;border-radius:50%;background:var(--glow);}
+
+  /* image placeholders (圖檔待上傳) */
+  .ph{
+    background:linear-gradient(135deg,#F6ECE3,#EFE0D2); border:1px solid var(--sand-line);
+    border-radius:16px; display:flex; align-items:center; justify-content:center; text-align:center;
+    color:var(--terra); padding:18px;
+  }
+  .ph .mk{font-family:"Cormorant Garamond",serif; font-style:italic; font-size:1.05rem; letter-spacing:.1em; opacity:.65; line-height:1.5;}
+
+  /* hero banner */
+  .hero-band{padding:0; width:100%; line-height:0;}
+  .hero-band .hero-img{display:block; width:100%; aspect-ratio:3/1; object-fit:cover; object-position:center;}
+  @media(max-width:680px){ .hero-band .hero-img{aspect-ratio:2/1;} }
+  .hero-ph{width:100%; aspect-ratio:1600/560; border:none; border-radius:0;}
+  .hero-ph .mk{font-size:1.25rem;}
+
+  /* hero 標題 */
+  .hero{text-align:center; padding:48px 0 30px;}
+  .hero h1{font-size:clamp(2rem,5.4vw,3.1rem); margin:6px 0 20px;}
+  .hero .lead{font-size:1.05rem; color:var(--ink-soft); max-width:610px; margin:0 auto; line-height:2.05;}
+  .hero-fig{display:block; width:100%; max-width:370px; height:auto; margin:36px auto 0;}
+
+  /* 區塊內文 + 適合你清單（共用） */
+  .bs-q{font-family:"Noto Serif TC"; color:var(--ink); font-size:1.06rem; line-height:1.95; margin:0 auto 24px; max-width:600px;}
+  .bs-desc{font-size:1rem; color:var(--ink-soft); line-height:2; margin:0 auto 16px; max-width:600px;}
+  .fitwrap{max-width:520px; margin:26px auto 0; text-align:left;}
+  .fit-lead{font-family:"Noto Serif TC"; color:var(--ink); font-size:.98rem; margin:0 0 14px; text-align:center;}
+  .fit-list{list-style:none; padding:0; margin:0; display:grid; gap:10px;}
+  .fit-list li{font-size:.95rem; color:var(--ink-soft); line-height:1.7; display:flex; gap:10px; align-items:flex-start;}
+  .fit-list li::before{content:"✓"; color:var(--terra); font-weight:600; flex-shrink:0;}
+
+  /* section heads */
+  .sec-head{text-align:center; margin-bottom:40px;}
+  .sec-head h2{font-size:clamp(1.5rem,3.6vw,2.05rem); margin:0;}
+  .sec-head .sub{color:var(--ink-soft); font-size:1rem; margin-top:12px;}
+  .divider{width:54px; height:2px; background:var(--terra); opacity:.5; margin:0 auto 22px; border-radius:2px;}
+
+  /* 筆刷組 */
+  .brushset{background:var(--paper-2);}
+  .brushset .bs-inner{max-width:720px; margin:0 auto; text-align:center;}
+  .brushset .bs-head{font-size:clamp(1.5rem,3.6vw,2.05rem); margin:0 0 30px;}
+  .bs-product{margin:0 auto 30px; max-width:620px;}
+  .bs-product img{width:100%; height:auto; display:block;}
+  .bs-incl{font-family:"Noto Serif TC"; color:var(--ink); font-size:1.12rem; font-weight:600; margin:40px 0 20px;}
+  .incl-list{list-style:none; margin:0 auto; max-width:540px; text-align:left;
+    background:var(--paper); border:1px solid var(--sand-line); border-radius:16px;
+    padding:24px 30px; display:grid; gap:10px;}
+  .incl-list li{font-size:.96rem; color:var(--ink-soft); line-height:1.7;}
+
+  /* 設備選購指南（粉色橫向卡） */
+  .gear{background:var(--paper); padding:72px 0;}
+  .gear .gear-card{
+    max-width:840px; margin:0 auto; display:flex; align-items:center; gap:28px;
+    background:linear-gradient(135deg,#FBEFEA,#F3DBD4);
+    border:1px solid #EAD3CC; border-radius:22px; padding:42px 46px;
+    box-shadow:0 18px 44px -26px rgba(67,53,43,.3);
+  }
+  .gear .gtext{flex:1; text-align:left;}
+  .gear .gtext .glab{font-size:.78rem; letter-spacing:.2em; color:#C06B57; font-weight:500; margin:0 0 8px;}
+  .gear .gtext h3{font-size:clamp(1.25rem,2.8vw,1.55rem); margin:0 0 14px; color:var(--ink);}
+  .gear .gtext .g-desc{margin:0 0 26px; font-size:.97rem; color:var(--ink-soft); line-height:1.9;}
+  .gear .gtext .btn-ghost{border-color:#CB8773; color:#A85A45;}
+  .gear .gtext .btn-ghost:hover{background:#F6E0D8; color:#A85A45;}
+  .gear .gart{width:34%; flex-shrink:0; display:flex; align-items:center; justify-content:center;}
+  .gear .gart img{width:100%; height:auto; display:block;}        /* 去背 PNG，平面呈現 */
+  .gear .gart .sprig{width:78%; max-width:150px; height:auto;}
+  @media(max-width:680px){
+    .gear{padding:56px 0;}
+    .gear .gear-card{flex-direction:column; text-align:center; padding:34px 28px; gap:20px;}
+    .gear .gtext{text-align:center;}
+    .gear .gart{width:56%; order:-1;}
+  }
+
+  /* 五天跟練課 */
+  .follow{background:var(--paper); text-align:center;}
+  .follow .soon-box{
+    aspect-ratio:1200/520; max-width:760px; margin:0 auto;
+    background:linear-gradient(135deg,#F6ECE3,#EFE0D2); border:1px solid var(--sand-line);
+    border-radius:20px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+  }
+  .follow .soon-box .cs{font-family:"Cormorant Garamond",serif; font-style:italic; font-size:2rem; letter-spacing:.12em; color:var(--terra); opacity:.8; line-height:1;}
+  .follow .soon-box .cs-note{font-size:.92rem; color:var(--ink-soft); letter-spacing:.04em;}
+
+  /* 好評 */
+  .reviews{background:var(--paper-2);}
+  .rlist{max-width:680px; margin:0 auto;}
+  .ritem{padding:24px 4px; border-top:1px solid var(--sand-line);}
+  .ritem:last-child{border-bottom:1px solid var(--sand-line);}
+  .ritem .rtop{display:flex; justify-content:space-between; align-items:baseline; gap:14px; margin-bottom:10px;}
+  .ritem .nm{font-family:"Noto Serif TC"; color:var(--ink); font-weight:600; font-size:.96rem; letter-spacing:.04em;}
+  .ritem .stars{color:var(--terra); font-size:13px; letter-spacing:.1em; white-space:nowrap;}
+  .ritem .quote{font-size:1rem; color:var(--ink-soft); line-height:1.85; margin:0;}
+  @media(max-width:520px){ .ritem .rtop{flex-direction:column; gap:4px;} }
+
+  /* 卡片（直播 / 課程共用） */
+  .card{background:var(--paper); border:1px solid var(--sand-line); border-radius:16px; overflow:hidden; display:flex; flex-direction:column; text-decoration:none; transition:transform .25s ease, box-shadow .25s ease;}
+  .card:hover{transform:translateY(-3px); box-shadow:0 18px 38px -22px rgba(67,53,43,.4);}
+  .card .c-img{aspect-ratio:1200/675; overflow:hidden; background:var(--sand);}
+  .card .c-img img{width:100%; height:100%; object-fit:cover; display:block;}
+  .card .c-body{padding:18px 20px 20px; display:flex; flex-direction:column; gap:8px; flex:1;}
+  .card .tag{font-size:.72rem; letter-spacing:.16em; color:var(--terra); font-weight:500;}
+  .card .c-title{font-family:"Noto Serif TC"; color:var(--ink); font-weight:600; font-size:1.02rem; line-height:1.5; margin:0;}
+  .card .c-sub{color:var(--ink-soft); font-weight:300; font-size:.88rem; line-height:1.7; margin:0;}
+  .card .more{margin-top:auto; padding-top:8px; font-size:.86rem; letter-spacing:.06em; color:var(--terra-deep); font-weight:500;}
+  .card:hover .more{color:var(--terra);}
+
+  /* 免費直播 */
+  .live{background:var(--paper);}
+  .vgrid{display:grid; grid-template-columns:repeat(2,1fr); gap:28px; max-width:860px; margin:0 auto;}
+  .vgrid .card .c-title{font-size:1.18rem;}
+  .vgrid .card .c-sub{font-size:.95rem;}
+  .vgrid .card .c-body{padding:22px 26px 24px; gap:9px;}
+  .live .seeall{text-align:center; margin-top:44px;}
+  @media(max-width:600px){ .vgrid{grid-template-columns:1fr; max-width:420px;} }
+
+  /* 線上課程 */
+  .online{background:var(--paper-2);}
+  .ngrid{display:grid; grid-template-columns:repeat(2,1fr); gap:26px; max-width:880px; margin:0 auto;}
+  .online .stars{color:var(--terra-deep); font-size:13px; letter-spacing:.04em;}
+  .online .stars b{font-weight:600; margin-right:5px;}
+  .online .stars span{color:var(--ink-faint); font-weight:300;}
+  @media(max-width:680px){ .ngrid{grid-template-columns:1fr; max-width:420px;} }
+  .online .online-cta{text-align:center; margin-top:46px;}
+  .online .online-cta .cta-keep{font-family:"Noto Serif TC"; color:var(--ink); font-size:1.05rem; line-height:2; margin:0 0 26px;}
+
+  /* YouTube CTA */
+  .yt{background:var(--paper); text-align:center;}
+  .yt .yt-inner{max-width:560px; margin:0 auto;}
+  .yt p.lead{font-size:1rem; color:var(--ink-soft); margin:0 0 28px;}
+
+  /* footer CTA */
+  .footer-cta{background:var(--sand); text-align:center; padding:80px 0;}
+  .footer-cta .inner{max-width:620px; margin:0 auto; padding:0 26px;}
+  .footer-cta h2{font-size:clamp(1.4rem,3.5vw,1.9rem); margin:0 0 16px;}
+  .footer-cta .cta-keep{font-family:"Noto Serif TC"; color:var(--ink); font-size:1.05rem; line-height:2; margin:0 0 30px;}
+  @media(max-width:480px){ .footer-cta{padding:60px 0;} }
+
+  footer{background:var(--ink); color:#E9DCC9; text-align:center; padding:52px 26px;}
+  footer .bk{font-family:"Cormorant Garamond",serif; font-size:1.5rem; letter-spacing:.2em; color:#F4D3B4;}
+  footer .links{margin-top:16px; font-size:.9rem; letter-spacing:.1em;}
+  footer a{color:#E9DCC9; text-decoration:none; border-bottom:1px solid rgba(244,211,180,.4); padding-bottom:2px;}
+  footer a:hover{color:#fff;}
+  footer .links span{margin:0 12px; opacity:.4;}
+
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media(prefers-reduced-motion:reduce){ .reveal{opacity:1; transform:none; transition:none;} html{scroll-behavior:auto;} }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO BANNER ============ -->
+<div class="hero-band">
+  <img class="hero-img" src="https://s.teachifycdn.com/image/width=2048,quality=95/school/images/1f00733a-8bbf-4ed6-9d14-86620268f9bf.png" alt="KIMUART 免費繪畫資源主視覺">
+</div>
+
+<!-- ============ HERO 標題 ============ -->
+<section class="hero">
+  <div class="wrap narrow">
+    <p class="eyebrow reveal">Free Resources</p>
+    <h1 class="reveal">免費繪畫資源</h1>
+    <p class="lead reveal">這裡整理了 KIMUART 的筆刷、教學、直播課與工具指南，如果你剛開始學 Procreate，或還不確定自己適不適合用 iPad 畫畫，可以先從這些免費資源開始。</p>
+    <img class="hero-fig reveal" src="https://s.teachifycdn.com/image/width=2048,quality=95/school/images/da12081e-0799-401e-b059-11a7342222ab.png" alt="KIMUART 免費繪畫資源插圖">
+  </div>
+</section>
+
+<!-- ============ KIMU 的特調筆刷組 ============ -->
+<section class="brushset">
+  <div class="wrap">
+    <div class="bs-inner reveal">
+      <p class="zh-eyebrow" style="text-align:center;">Free Brushes</p>
+      <h2 class="bs-head">KIMU 的特調 Procreate 筆刷</h2>
+      <p class="bs-desc">這是一份適合新手開始的免費練習資源。你會拿到 KIMU 的特調筆刷，並跟著教學一步一步練習，感受用 Procreate 畫出手繪水彩感的方式。</p>
+
+      <div class="bs-product">
+        <img src="https://warehouse.kaik.network/attachment/public_image/3252d269-c5b3-4ae6-8015-dfbdb78c4af2/a0dc64b2-f660-4533-94ce-7a933fb04494.png" alt="KIMU 特調 Procreate 筆刷與色票組（3.0）">
+      </div>
+
+      <p class="bs-incl">裡面包含什麼呢？</p>
+      <ul class="incl-list">
+        <li>✨ <strong>17 支特調筆刷</strong>（常用筆刷，含影片中的三支）</li>
+        <li>✨ <strong>14 組 Copic 色票組</strong>，適合新手入門</li>
+        <li>✨ <strong>1 份水彩小物範例草稿圖</strong>（銀杏葉與行李箱）</li>
+        <li>✨ <strong>3 支筆刷畫水彩的教學影片</strong>，跟著畫就會</li>
+      </ul>
+
+      <div style="margin-top:32px;"><a class="btn" href="https://course.kimu.art/digital-downloads/3brushes"><span class="dot"></span>點擊這裡立刻索取</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KIMU 的免費直播 ============ -->
+<section class="live">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="zh-eyebrow">Free Live Replay</p>
+      <h2>主題式跟練直播</h2>
+    </div>
+    <div class="narrow reveal" style="text-align:center; margin:-16px auto 40px;">
+      <p class="bs-desc">這裡整理了 KIMUART 過去的免費直播課程。如果你想用比較輕鬆的方式學畫畫，可以從直播回放開始，一邊聽、一邊畫，慢慢熟悉 Procreate 的操作與創作節奏。</p>
+    </div>
+    <div class="vgrid">
+
+      <a class="card reveal" href="https://course.kimu.art/digital-downloads/live2">
+        <div class="c-img"><img src="https://warehouse.kaik.network/digital_product/cover_photo/af04fa1c-9ad5-4bd6-8573-62bfde1d8a29/fc6b3b95-a67e-4f79-8171-1cc4f49b3b6a.jpg" alt="iPad 繪畫跟練課－控筆練習（草莓蛋糕捲）"></div>
+        <div class="c-body">
+          <span class="tag">控筆練習</span>
+          <h3 class="c-title">好玩的控筆練習</h3>
+          <p class="c-sub">用草莓蛋糕捲，練習穩定的線條與控筆。</p>
+          <span class="more">免費觀看 →</span>
+        </div>
+      </a>
+
+      <a class="card reveal" href="https://course.kimu.art/digital-downloads/live3">
+        <div class="c-img"><img src="https://warehouse.kaik.network/digital_product/cover_photo/102d8de7-e850-4eac-88a6-6b4153cfe200/8bf8ee29-47a6-48fc-83a5-7115b76f22a8.jpg" alt="iPad 繪畫跟練課－靈感收集（開心狗狗）"></div>
+        <div class="c-body">
+          <span class="tag">靈感收集</span>
+          <h3 class="c-title">靈感累積小妙招</h3>
+          <p class="c-sub">畫一隻開心狗狗，把日常靈感變成作品。</p>
+          <span class="more">免費觀看 →</span>
+        </div>
+      </a>
+
+      <a class="card reveal" href="https://course.kimu.art/digital-downloads/live4">
+        <div class="c-img"><img src="https://warehouse.kaik.network/digital_product/cover_photo/a380df40-8ba3-42b8-a486-1cb8617c8aca/c822f9c0-6b6f-4033-bfa3-23988470d06e.jpg" alt="iPad 繪畫跟練課－陰影上色（草莓女孩）"></div>
+        <div class="c-body">
+          <span class="tag">陰影上色</span>
+          <h3 class="c-title">有邏輯的陰影上色</h3>
+          <p class="c-sub">用草莓女孩，學會有邏輯的光影上色。</p>
+          <span class="more">免費觀看 →</span>
+        </div>
+      </a>
+
+      <a class="card reveal" href="https://course.kimu.art/digital-downloads/live5">
+        <div class="c-img"><img src="https://warehouse.kaik.network/digital_product/cover_photo/6ad9bdd0-e2a3-40ce-b96d-066d9db28693/e61ba9dd-e97c-40c6-b96c-07fbf0d55914.jpg" alt="iPad 繪畫跟練課－色塊速塗（飛鳥與燈塔）"></div>
+        <div class="c-body">
+          <span class="tag">色塊速塗</span>
+          <h3 class="c-title">繽紛的色彩速塗</h3>
+          <p class="c-sub">以飛鳥與燈塔，練習輕快的色塊速塗。</p>
+          <span class="more">免費觀看 →</span>
+        </div>
+      </a>
+
+    </div>
+    <div class="seeall reveal">
+      <a class="btn-ghost" href="https://course.kimu.art/digital-downloads/categories/live">看全部免費直播 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 設備選購指南 ============ -->
+<section class="gear">
+  <div class="wrap">
+    <div class="gear-card reveal">
+      <div class="gtext">
+        <p class="glab">還沒有設備嗎？</p>
+        <h3>想用 iPad 畫畫，該買什麼設備？</h3>
+        <p class="g-desc">不知道該選哪一台 iPad、需不需要 Apple Pencil？這份指南陪你依照自己的預算與需求，挑出最適合的工具，避免買錯或買太多。</p>
+        <a class="btn-ghost" href="https://kimu-art.github.io/ipad_guide/" target="_blank" rel="noopener">查看設備選購指南 →</a>
+      </div>
+      <div class="gart">
+        <img src="https://s.teachifycdn.com/image/width=2048,quality=95/school/images/66a44db9-e3b0-4ee5-a158-9ac9e1af9d23.png" alt="iPad 與 Apple Pencil 設備插圖">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KIMU 的線上課程 ============ -->
+<section class="online">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="zh-eyebrow">Online Courses</p>
+      <h2>還想更完整地學畫畫嗎？</h2>
+      <p class="sub">想更有系統地學下去，可以從 KIMU 的線上課程開始</p>
+    </div>
+    <div class="ngrid reveal">
+
+      <a class="card" href="https://sat.cool/course/83" target="_blank" rel="noopener">
+        <div class="c-img"><img src="https://warehouse.kaik.network/course/cover_photo/e18f4dd0-6efb-43bb-b6ca-d6bc58f4d310/c970b556-ce74-4ba4-adb0-bf8e74f6ac9f.jpg" alt="Procreate 21 天生活繪畫跟練課"></div>
+        <div class="c-body">
+          <span class="tag">知識衛星平台</span>
+          <h3 class="c-title">Procreate 21 天生活繪畫跟練課</h3>
+          <p class="c-sub">每天三十分鐘，從簡到繁，完成約十五張作品，把畫畫變成一種生活習慣。</p>
+          <span class="more">查看課程 →</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://course.kimu.art/courses/noviceclass">
+        <div class="c-img"><img src="https://warehouse.kaik.network/course/cover_photo/97e2c67e-af96-4f7f-bc2a-a5c54821db38/ef904f9a-b465-4913-a6c9-1934a87e7b1e.jpg" alt="Procreate 新手攻略：從 0 開始繪製療癒風頭像"></div>
+        <div class="c-body">
+          <span class="tag">新手入門</span>
+          <h3 class="c-title">Procreate 新手攻略：從 0 開始繪製療癒風頭像</h3>
+          <div class="stars"><b>5.0</b>★★★★★ <span>(50)</span></div>
+          <span class="more">查看課程 →</span>
+        </div>
+      </a>
+
+    </div>
+    <div class="online-cta reveal">
+      <p class="cta-keep">不需要一次變得很厲害，先從一張小圖、一段練習、一點點喜歡開始。</p>
+      <a class="btn" href="https://course.kimu.art/painting"><span class="dot"></span>查看所有繪畫課程</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 使用者好評 ============ -->
+<section class="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>學員好評</h2>
+      <p class="sub">來自下載過 KIMU 特調筆刷組的學員回饋</p>
+    </div>
+    <div class="rlist reveal">
+
+      <div class="ritem">
+        <div class="rtop"><span class="nm">王羿婷</span><span class="stars">★★★★★</span></div>
+        <p class="quote">講解很細節，好多實用的筆刷和色票，老師真好 😊</p>
+      </div>
+
+      <div class="ritem">
+        <div class="rtop"><span class="nm">Grace Yang</span><span class="stars">★★★★★</span></div>
+        <p class="quote">很專業的教學，讓新手也可以很快畫出很有成就感的畫。</p>
+      </div>
+
+      <div class="ritem">
+        <div class="rtop"><span class="nm">李伊筑</span><span class="stars">★★★★★</span></div>
+        <p class="quote">教學淺顯易懂 👍 筆刷跟紙材都幫忙準備好了真的很貼心，說話聲音也好溫柔 ❤️ 期待推出更多教學影片～</p>
+      </div>
+
+      <div class="ritem">
+        <div class="rtop"><span class="nm">李佩玲</span><span class="stars">★★★★★</span></div>
+        <p class="quote">覺得 KIMU 的教學易懂⋯也很喜歡 KIMU 的風格⋯</p>
+      </div>
+
+      <div class="ritem">
+        <div class="rtop"><span class="nm">七次方</span><span class="stars">★★★★★</span></div>
+        <p class="quote">實用、好上手操作的筆刷，說明得很詳細又易懂，非常感恩！</p>
+      </div>
+
+      <div class="ritem">
+        <div class="rtop"><span class="nm">陳宛青</span><span class="stars">★★★★★</span></div>
+        <p class="quote">非常棒，買了 21 天的課程才看到這個網站，好多寶藏！</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="bk">KIMUART</div>
+  <div class="links">
+    <a href="https://instagram.com/kimuart" target="_blank" rel="noopener">Instagram @kimuart</a><span>·</span><a href="https://www.youtube.com/@kimuart" target="_blank" rel="noopener">YouTube</a><span>·</span><a href="https://course.kimu.art/">course.kimu.art</a><span>·</span>kimu@kimu.art
+  </div>
+</footer>
+
+<script>
+  const BRUSH = '<svg viewBox="0 0 120 12" preserveAspectRatio="none"><path d="M2 7 C 30 2, 70 11, 118 5" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg>';
+  document.body.innerHTML = document.body.innerHTML.split('{{BRUSH}}').join(BRUSH);
+  const io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>
