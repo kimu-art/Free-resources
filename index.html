@@ -203,9 +203,21 @@
   .reveal{opacity:0; transform:translateY(22px); transition:opacity .8s ease, transform .8s ease;}
   .reveal.in{opacity:1; transform:none;}
   @media(prefers-reduced-motion:reduce){ .reveal{opacity:1; transform:none; transition:none;} html{scroll-behavior:auto;} }
+
+  /* 限時活動公告列（2026/10 懶人速繪筆刷，活動結束後整段移除） */
+  .promo-bar{background:var(--glow); border-bottom:1px solid var(--sand-line); text-align:center; padding:11px 20px; font-size:.92rem; line-height:1.7; color:var(--ink); position:relative; z-index:3;}
+  .promo-bar a{color:var(--terra-deep); font-weight:500; text-decoration:none; border-bottom:1px solid var(--terra); margin-left:.5em; white-space:nowrap;}
+  .promo-bar .pb-tag{display:inline-block; font-size:.72rem; letter-spacing:.14em; color:#FFF8EF; background:var(--terra); border-radius:20px; padding:1px 10px; margin-right:.7em; font-weight:500;}
+  /* 限時活動區塊粗外框（10/15 後隨整段區塊一起移除） */
+  .promo-frame{border:4px solid var(--terra); border-radius:26px; padding:40px 28px 44px; background:var(--paper); box-shadow:0 18px 44px -26px rgba(158,85,48,.45);}
+  @media(max-width:680px){ .promo-frame{padding:30px 18px 34px; border-width:3px; border-radius:20px;} }
 </style>
 </head>
 <body>
+
+<!-- ============ 限時活動公告列（10/15 結束後移除） ============ -->
+<div class="promo-bar"><span class="pb-tag">限時活動</span>10/15 前填寫問卷，免費領取「懶人速繪筆刷」（原價 NT$299）<a href="https://course.kimu.art/digital-downloads/quicksketchbrush" target="_blank" rel="noopener">前往領取 →</a></div>
+
 
 <!-- ============ HERO BANNER ============ -->
 <div class="hero-band">
@@ -243,6 +255,29 @@
       </ul>
 
       <div style="margin-top:32px;"><a class="btn" href="https://course.kimu.art/digital-downloads/3brushes" target="_blank" rel="noopener"><span class="dot"></span>點擊這裡立刻索取</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 限時活動：懶人速繪筆刷（10/15 結束後移除） ============ -->
+<section class="brushset" style="background:var(--paper);">
+  <div class="wrap">
+    <div class="bs-inner promo-frame reveal">
+      <p class="zh-eyebrow" style="text-align:center;">限時活動中</p>
+      <h2 class="bs-head">KIMU 特調懶人速繪筆刷</h2>
+      <p class="bs-desc">限時活動：10/15 前填寫問卷，就能免費領取（原價 NT$299）。兩支專為 iPad 速寫設計的 Procreate 筆刷，讓你輕鬆畫出有手感的小圖。</p>
+
+      <div class="bs-product">
+        <img src="https://warehouse.kaik.network/digital_product/cover_photo/3768f701-cbe6-44d3-82eb-b1aaf70134e5/53d4cb41-0f78-4ea2-9464-6607c06c09e0.png" alt="KIMU 特調懶人速繪筆刷">
+      </div>
+
+      <p class="bs-incl">裡面包含什麼呢？</p>
+      <ul class="incl-list">
+        <li>✨ <strong>鉛筆質感圓頭筆刷</strong>，適合畫線稿</li>
+        <li>✨ <strong>顆粒質感筆刷</strong>，適合大面積平塗上色</li>
+      </ul>
+
+      <div style="margin-top:32px;"><a class="btn" href="https://course.kimu.art/digital-downloads/quicksketchbrush" target="_blank" rel="noopener"><span class="dot"></span>填問卷免費領取（10/15 止）</a></div>
     </div>
   </div>
 </section>
