@@ -169,6 +169,15 @@
   .vgrid .card .c-sub{font-size:.95rem;}
   .vgrid .card .c-body{padding:22px 26px 24px; gap:9px;}
   .live .seeall{text-align:center; margin-top:44px;}
+  /* 教學文章 */
+  .posts{background:var(--paper-2);}
+  .plist{list-style:none; margin:0 auto; padding:0; max-width:760px; display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .plist a{display:block; height:100%; box-sizing:border-box; background:var(--paper); border:1px solid var(--sand-line); border-radius:14px; padding:18px 20px; text-decoration:none; transition:transform .25s ease, box-shadow .25s ease;}
+  .plist a:hover{transform:translateY(-2px); box-shadow:0 14px 28px -18px rgba(62,50,42,.35);}
+  .plist .tag{font-size:.72rem; letter-spacing:.16em; color:var(--terra); font-weight:500;}
+  .plist .p-title{display:block; font-family:"Noto Serif TC",serif; color:var(--ink); font-weight:600; font-size:1rem; line-height:1.6; margin-top:6px;}
+  .posts .seeall{text-align:center; margin-top:40px;}
+  @media(max-width:600px){ .plist{grid-template-columns:1fr; max-width:420px;} }
   @media(max-width:600px){ .vgrid{grid-template-columns:1fr; max-width:420px;} }
 
   /* 線上課程 */
@@ -302,6 +311,30 @@
     </div>
     <div class="seeall reveal">
       <a class="btn-ghost" href="https://course.kimu.art/digital-downloads/categories/live" target="_blank" rel="noopener">看全部免費直播 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 教學文章 ============ -->
+<section class="posts">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="zh-eyebrow">Free Articles</p>
+      <h2>免費教學文章</h2>
+    </div>
+    <div class="narrow reveal" style="text-align:center; margin:-16px auto 40px;">
+      <p class="bs-desc">卡在某個小地方的時候，可以先來這裡找找看。線條、陰影、構圖、風格，我把教學時最常被問到的問題，整理成一篇一篇的文章。</p>
+    </div>
+    <ul class="plist reveal">
+      <li><a href="https://course.kimu.art/posts/procreate-beginner-guide" target="_blank" rel="noopener"><span class="tag">Procreate 入門</span><span class="p-title">Procreate 新手入門：筆刷、顏色、圖層</span></a></li>
+      <li><a href="https://course.kimu.art/posts/shaky-lines-pen-control" target="_blank" rel="noopener"><span class="tag">控筆</span><span class="p-title">線條好抖怎麼辦？從排查到 CSI 控筆練習</span></a></li>
+      <li><a href="https://course.kimu.art/posts/lineart-tips" target="_blank" rel="noopener"><span class="tag">線稿</span><span class="p-title">三個讓線稿更好看的方法</span></a></li>
+      <li><a href="https://course.kimu.art/posts/shading-tips-for-beginners" target="_blank" rel="noopener"><span class="tag">陰影上色</span><span class="p-title">陰影怎麼畫？新手最容易忽略的三個要素</span></a></li>
+      <li><a href="https://course.kimu.art/posts/focal-point-visual-guide-lines" target="_blank" rel="noopener"><span class="tag">構圖</span><span class="p-title">畫面沒有重點？突顯主體的五個方法與視覺引導線</span></a></li>
+      <li><a href="https://course.kimu.art/posts/how-to-find-your-drawing-style" target="_blank" rel="noopener"><span class="tag">畫風</span><span class="p-title">怎麼找到自己的繪畫風格？</span></a></li>
+    </ul>
+    <div class="seeall reveal">
+      <a class="btn-ghost" href="https://course.kimu.art/posts" target="_blank" rel="noopener">看全部教學文章 →</a>
     </div>
   </div>
 </section>
